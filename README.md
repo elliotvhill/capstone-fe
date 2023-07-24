@@ -1,4 +1,4 @@
-# Capstone _(front end)_
+# GalazyGaze _(working title, front end)_
 
 ## Description
 An astronomy planning app built using the open [Weather API](https://www.weatherapi.com/). Users will use the app to check stargazing conditions in their area, and can set up to be notified when conditions meet their criteria. They can also learn about and get alerts about astronomical events like full moons, meteor showers, etc.
