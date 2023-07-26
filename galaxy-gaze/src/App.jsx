@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
-import Main from './components/Main'
+import SearchComponent from './components/Search'
+import Nav from './components/Nav'
 
 function App() {
-  
+
   // state to store celestial bodies data
   // const [celestBodies, setCelestBodies] = useState([])
   
@@ -23,9 +25,15 @@ function App() {
     <div className='app'>
       <h1>Galaxy Gaze</h1>
       <h2>An astronomy app</h2>
-      <div className='api-response'></div>
-      <Home />
-      <Main />
+      <header>
+        <Nav />
+      </header>
+      <main>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/search' element={<SearchComponent />} />
+        </Routes>
+      </main>
     </div>
   )
 }

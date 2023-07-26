@@ -4,7 +4,7 @@ const Main = () => {
     return (
         <div className="main">
             <h3> This is Main</h3>
-            <Nav />
+            {/* <Nav /> */}
         </div>
     )
 }

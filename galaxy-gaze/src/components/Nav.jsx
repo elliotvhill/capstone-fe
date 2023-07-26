@@ -1,6 +1,12 @@
+import { Link } from 'react-router-dom'
+
 const Nav = () => {
+
     return (
-        <p>This is Nav</p>
+        <div className='nav'>
+            <Link to='/'>Home</Link>
+            <Link to='/search'>Search</Link>
+        </div>
     )
 }
 
