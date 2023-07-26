@@ -50,9 +50,10 @@ const SearchComponent = () => {
                 </form>
                 <div className='results'>
                     <ul className='search-results'>
-                        {userCoords.map((result) => (
+                        {/* {userCoords.map((result) => (
                             <li key={result.id}>{result.name}</li>
-                        ))}
+                        ))} */}
+                        <li className="your-coords">The coordinates for that location are {userCoords}</li>
                     </ul>
                 </div>
             </div>
