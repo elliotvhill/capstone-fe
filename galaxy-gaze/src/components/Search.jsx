@@ -20,49 +20,41 @@ const SearchComponent = () => {
     
     //////////////////////////////////////////////
     
+    let isMounted = true // track component mount status
     // user submits search query for deep space object:
-    // useEffect to let api call run & return results
-    useEffect(() => {
-        let isMounted = true // track component mount status
     
     // function to get deep space search results:
-        const getDeepSpaceData = async (event) => {
-            event.preventDefault()
-            // disable search button while awaiting response to prevent dupe reqs
-            try {
-                const response = await axios.get(`http://localhost:8000/search-deep-space/?term=${searchQuery}`) // testing local api endpoint for dev
-                // const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
+    const getDeepSpaceData = async (event) => {
+        // disable search button while awaiting response to prevent dupe reqs
+        try {
+            const response = await axios.get(`http://localhost:8000/search-deep-space/?term=${searchQuery}`) // testing local api endpoint for dev
+            // const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
                 if (isMounted) {
-                    setSearchResults(response)
+                    setSearchResults(response.data)
                 }
             } catch (error) {
                 console.error("Error searching deep space:", error)
             }
             // finally { re-enable search button }
         }
-    
+        
         const handleDeepSpaceSearch = async () => {
-            // event.preventDefault()
             try {
                 await getDeepSpaceData(searchQuery)
             } catch (error) {
                 console.error("Error searching deep space:", error)
             }
         }
-        // handleDeepSpaceSearch()
 
-        // console.log(searchResults)
-        // if (searchResults) {
-        //     console.log('results found')
-        //     ref.current
-        // } else {
-        //     console.log('no results')
-        //     ref.current
-        // }
+    // useEffect to let api call run & return results
+    useEffect(() => {
+        handleDeepSpaceSearch()
+        
         return () => {
             isMounted = false
         }
-    }, [searchQuery])
+
+    }, [searchResults])
 
 
     //////////////////////////////////////////////
