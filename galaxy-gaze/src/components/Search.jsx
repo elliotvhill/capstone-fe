@@ -1,18 +1,12 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import axios from 'axios'
 import { BASE_URL, GEOCODE_SEARCH, DEEP_SPACE_SEARCH_URL } from "../globals"
 
 const SearchComponent = () => {
     const [searchQuery, setSearchQuery] = useState("")
-    // const [userCoords, setUserCoords] = useState([])
     const [searchResults, setSearchResults] = useState([])
     const [loading, setLoading] = useState(false)
 
-    // useRef to maniuplate DOM
-    // const ref = useRef(null)
-
-    
-    // user types in city, state to search for deep space object in their loc
     const handleChange = (event) => {
         const query = event.target.value
         // save search query in state for later use
@@ -21,11 +15,7 @@ const SearchComponent = () => {
     
     //////////////////////////////////////////////
     
-    // user submits search query for deep space object:
-    
-    // function to get deep space search results:
     const getDeepSpaceData = async (event) => {
-        // disable search button while awaiting response to prevent dupe reqs
         setLoading(true)
         try {
             // const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
@@ -47,40 +37,6 @@ const SearchComponent = () => {
         //     }
         // }
 
-    // useEffect to let api call run & return results
-    // useEffect(() => {
-    //     if (searchQuery) {
-    //         // getDeepSpaceData()
-    //         // handleDeepSpaceSearch()
-    //     }
-    // }, [searchQuery])
-
-
-    //////////////////////////////////////////////
-    // user submits search query to find bodies in their location
-    // pass to geocode api to convert to coords
-    //     const handleSearch = async (event) => {
-    //         event.preventDefault()
-    //         try {
-    //             // make api request passing searchQuery (address)
-    //             const response = await axios.get(`${GEOCODE_SEARCH}${searchQuery}`)
-    //             // return api response latitude
-    //             const geoData = response.data
-    //             const latitude = geoData[0].lat
-    //             // return api response longitude
-    //             const longitude = geoData[0].lon
-    //             console.log("latitude: ", latitude, "longitude: ", longitude)
-    //             const coordinates = `${latitude}, ${longitude}`
-    //             // store coords in state -> coords
-    //             console.log(coordinates)
-    //             setUserCoords(coordinates)
-    //         } catch (error) {
-    //             console.error("Error getting coordinates:", error)
-    //         }
-
-    //     // pass coords state to be sent in astro api call
-    // }
-
     // handle form submission
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -100,12 +56,6 @@ const SearchComponent = () => {
                     <button type='submit' className='submit-search'> Search </button>
                 </form>
                 <div className='results'>
-                    {/* <ul className='search-results'> */}
-                        {/* {userCoords.map((result) => (
-                            <li key={result.id}>{result.name}</li>
-                        ))} */}
-                        {/* <li className="your-coords">The coordinates for that location are {userCoords}</li> */}
-                    {/* </ul> */}
                     {searchResults ? (
                         searchResults.map((result) => (
                             <div key={result.id}>
