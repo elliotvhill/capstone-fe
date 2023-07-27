@@ -6,6 +6,7 @@ const SearchComponent = () => {
     const [searchQuery, setSearchQuery] = useState("")
     // const [userCoords, setUserCoords] = useState([])
     const [searchResults, setSearchResults] = useState([])
+    const [loading, setLoading] = useState(false)
 
     // useRef to maniuplate DOM
     // const ref = useRef(null)
@@ -20,41 +21,39 @@ const SearchComponent = () => {
     
     //////////////////////////////////////////////
     
-    let isMounted = true // track component mount status
     // user submits search query for deep space object:
     
     // function to get deep space search results:
     const getDeepSpaceData = async (event) => {
         // disable search button while awaiting response to prevent dupe reqs
+        setLoading(true)
         try {
-            const response = await axios.get(`http://localhost:8000/search-deep-space/?term=${searchQuery}`) // testing local api endpoint for dev
             // const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
-                if (isMounted) {
-                    setSearchResults(response.data)
-                }
+            const response = await axios.get(`http://localhost:8000/search-deep-space/?term=${searchQuery}`) // testing local api endpoint for dev
+            console.log(response.data)
+            setSearchResults(response.data)
             } catch (error) {
                 console.error("Error searching deep space:", error)
-            }
-            // finally { re-enable search button }
+        } finally {
+            setLoading(false)
+        }
         }
         
-        const handleDeepSpaceSearch = async () => {
-            try {
-                await getDeepSpaceData(searchQuery)
-            } catch (error) {
-                console.error("Error searching deep space:", error)
-            }
-        }
+        // const handleDeepSpaceSearch = async () => {
+        //     try {
+        //         await getDeepSpaceData(searchQuery)
+        //     } catch (error) {
+        //         console.error("Error searching deep space:", error)
+        //     }
+        // }
 
     // useEffect to let api call run & return results
-    useEffect(() => {
-        handleDeepSpaceSearch()
-        
-        return () => {
-            isMounted = false
-        }
-
-    }, [searchResults])
+    // useEffect(() => {
+    //     if (searchQuery) {
+    //         // getDeepSpaceData()
+    //         // handleDeepSpaceSearch()
+    //     }
+    // }, [searchQuery])
 
 
     //////////////////////////////////////////////
@@ -85,7 +84,8 @@ const SearchComponent = () => {
     // handle form submission
     const handleSubmit = (event) => {
         event.preventDefault()
-        handleDeepSpaceSearch()
+        // handleDeepSpaceSearch()
+        getDeepSpaceData()
     }
 
         return (
