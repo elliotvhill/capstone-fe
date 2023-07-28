@@ -19,7 +19,7 @@ const SearchComponent = () => {
         setLoading(true)
         try {
             // const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
-            const response = await axios.get(`http://localhost:8000/search-deep-space/?term=${searchQuery}`) // testing local api endpoint for dev
+            const response = await axios.get(`http://localhost:8000/deepspaceobject/?term=${searchQuery}`) // testing local api endpoint for dev
             console.log(response.data)
             setSearchResults(response.data)
             } catch (error) {
