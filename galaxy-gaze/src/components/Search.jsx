@@ -14,8 +14,8 @@ const SearchComponent = () => {
     const getDeepSpaceData = async () => {
         setLoading(true)
         try {
-            const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
-            // const response = await axios.get(`http://localhost:8000/deepspace/?term=${searchQuery}`) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
+            // const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
+            const response = await axios.get(`http://localhost:8000/deepspaceobject/?term=${searchQuery}`) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
             console.log(response.data)
             setSearchResults(response.data)
             } catch (error) {
@@ -47,10 +47,10 @@ const SearchComponent = () => {
                     ) : searchResults ? (
                         searchResults.map((result) => (
                             <div key={result.id}>
-                            <h4>{result.name}</h4>
-                            <p>Type of object: {result.type}</p>
-                            <p>Sub-type: {result.subType}</p>
-                            <p>Ojbect position: {result.position}</p>
+                            <h4 className="object-name">{result.object_name}</h4>
+                            <p className="object-type">Type of object: {result.object_type}</p>
+                            <p className="object-sub-type">Sub-type: {result.object_sub_type}</p>
+                            <p className="object-position">Ojbect position: {result.object_position_dec}</p>
                         </div>
                         ))
                     ) : (
