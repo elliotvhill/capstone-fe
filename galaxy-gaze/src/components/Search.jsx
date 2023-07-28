@@ -15,6 +15,7 @@ const SearchComponent = () => {
         setLoading(true)
         try {
             const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
+            // const response = await axios.get(`https://chimerical-liger-e01200.netlify.app/deepspaceobject/?term=${searchQuery}`)
             // const response = await axios.get(`http://localhost:8000/deepspaceobject/?term=${searchQuery}`) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
             console.log(response.data)
             setSearchResults(response.data)
