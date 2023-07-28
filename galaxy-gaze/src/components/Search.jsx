@@ -15,7 +15,7 @@ const SearchComponent = () => {
         setLoading(true)
         try {
             const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
-            // const response = await axios.get(`http://localhost:8000/search-deep-space/?term=${searchQuery}`) // testing local api endpoint for dev
+            // const response = await axios.get(`http://localhost:8000/deepspace/?term=${searchQuery}`) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
             console.log(response.data)
             setSearchResults(response.data)
             } catch (error) {
@@ -25,9 +25,9 @@ const SearchComponent = () => {
         }
         }
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
-        await getDeepSpaceData()
+        getDeepSpaceData()
     }
 
         return (
