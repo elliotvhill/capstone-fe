@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react"
 import axios from 'axios'
-import { BASE_URL, DEEP_SPACE_SEARCH_URL } from "../globals"
+import { DEEP_SPACE_SEARCH_URL } from "../globals"
+// const VITE_ASTRO_APP_ID = import.meta.env.VITE_ASTRO_APP_ID
+// const VITE_ASTRO_APP_SECRET = import.meta.env.VITE_ASTRO_APP_SECRET
+// const VITE_AUTH_STRING = `Basic ${btoa}(${VITE_ASTRO_APP_ID}:${VITE_ASTRO_APP_SECRET})`
 
 const SearchComponent = () => {
     const [searchQuery, setSearchQuery] = useState("")
@@ -14,9 +17,10 @@ const SearchComponent = () => {
     const getDeepSpaceData = async () => {
         setLoading(true)
         try {
-            const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
-            // const response = await axios.get(`https://chimerical-liger-e01200.netlify.app/deepspaceobject/?term=${searchQuery}`)
-            // const response = await axios.get(`http://localhost:8000/deepspaceobject/?term=${searchQuery}`) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
+            const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`)
+            // const response = await axios.get(`https://galaxygaze.netlify.app/search?term=${searchQuery}`)
+            // const response = await axios.get(`http://localhost:8000/search?term=${searchQuery}`) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
+            // const response = await axios.get(`http://localhost:8000/search?term=${searchQuery}`) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
             console.log(response.data)
             setSearchResults(response.data)
             } catch (error) {
