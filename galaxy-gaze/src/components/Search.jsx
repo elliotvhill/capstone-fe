@@ -1,40 +1,36 @@
-import React, { useState } from "react"
+// MOST RECENT COPY
+
+import React, { useState, useEffect } from "react"
 import axios from 'axios'
 import { DEEP_SPACE_SEARCH_URL } from "../globals"
 
 const SearchComponent = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const [searchResults, setSearchResults] = useState([])
-
+    const [loading, setLoading] = useState(false)
 
     const handleChange = (event) => {
         setSearchQuery(event.target.value)
     }
-
-        const getDeepSpaceData = async (event) => {
-            // disable search button while awaiting response to prevent dupe reqs
-            try {
-                const response = await axios.get(`http://localhost:8000/deepspaceobject/?term=${searchQuery}`) // testing local api endpoint for dev
-                // const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`) // actual astro api endpoint
-                setSearchResults(response.data)
-            } catch (error) {
-                console.error("Error searching deep space:", error)
-            }
-        }
     
-        const handleDeepSpaceSearch = async () => {
-            // event.preventDefault()
-            try {
-                await getDeepSpaceData(searchQuery)
+    const getDeepSpaceData = async () => {
+        setLoading(true)
+        try {
+            const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`)
+            // const response = await axios.get(`https://galaxygaze.netlify.app/search?term=${searchQuery}`) // <-- netlify delpoyment
+            // const response = await axios.get(`http://localhost:8000/deepspaceobject/search?term=${searchQuery}`) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
+            console.log(response.data)
+            setSearchResults(response.data)
             } catch (error) {
                 console.error("Error searching deep space:", error)
-            }
+        } finally {
+            setLoading(false)
         }
-
+        }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        handleDeepSpaceSearch()
+        getDeepSpaceData()
     }
 
         return (
@@ -49,13 +45,16 @@ const SearchComponent = () => {
                     <button type='submit' className='submit-search'> Search </button>
                 </form>
                 <div className='results'>
-                    {searchResults ? (
+                    {loading ? (
+                        <p> Loading... </p>
+                    ) : searchResults ? (
                         searchResults.map((result) => (
                             <div key={result.id}>
-                            <h4>{result.object_name}</h4>
-                            <p>Type of object: {result.object_type}</p>
-                            <p>Sub-type: {result.object_sub_type}</p>
-                            <p>Ojbect position: {result.object_position}</p>
+                            <h4 className="object-name">{result.object_name}</h4>
+                            <p className="object-type">Type of object: {result.object_type}</p>
+                            <p className="object-sub-type">Sub-type: {result.object_sub_type}</p>
+                            <p className="object-position-ra">Right Ascension: {result.object_position_ra}</p>
+                            <p className="object-position-dec">Declination: {result.object_position_dec}</p>
                         </div>
                         ))
                     ) : (
