@@ -1,27 +1,25 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import UserContext from '../UserContext'
 
 const Login = () => {
 
-    const initialState = {
-        username: '',
-        password: ''
-    }
-    const [formState, setFormState] = useState(initialState)
+    const { userInfo, setUserInfo } = useContext(UserContext)
     const [loggedIn, setLoggedIn] = useState(false)
 
     // function to handle submit
     const handleSubmit = (event) => {
         event.preventDefault()
-        setFormState({ ...formState, [event.target.id]: event.target.value })
-        console.log(formState)
-        setLoggedIn(true)
-        console.log(loggedIn)
-        setFormState(initialState)
+        useEffect(() => {
+            setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
+            console.log(userInfo)
+            setLoggedIn(true)
+            console.log(loggedIn)
+        }, [loggedIn])
     }
     
         // function to handle change
         const handleChange = (event) => {
-            setFormState({...formState, [event.target.id]: event.target.value})
+            setUserInfo({...userInfo, [event.target.id]: event.target.value})
         }
 
 
@@ -29,7 +27,7 @@ const Login = () => {
 
 
     return (
-        <div className="login">
+        <div className="login-container">
             <form className="login" onSubmit={handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <input
@@ -37,7 +35,7 @@ const Login = () => {
                     placeholder="Username"
                     id="username"
                     onChange={handleChange}
-                    value={formState.username}
+                    value={userInfo.username}
                 />
                 <label htmlFor="password">Password</label>
                 <input
@@ -45,7 +43,7 @@ const Login = () => {
                     placeholder="Password"
                     id="password"
                     onChange={handleChange}
-                    value={formState.password}
+                    value={userInfo.password}
                 />
                 <button type="submit">Log in</button>
             </form>

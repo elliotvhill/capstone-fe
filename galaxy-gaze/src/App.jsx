@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
@@ -6,25 +6,20 @@ import SearchComponent from './components/Search'
 import Nav from './components/Nav'
 import Login from './components/Login'
 import User from './components/User'
+import UserContext from './UserContext'
 
 function App() {
 
-  // state to store celestial bodies data
-  // const [celestBodies, setCelestBodies] = useState([])
-  
-  // get location info (address) from user via input
-  // state to store user location (address) data
-  // const [userLocation, setUserLocation] = useState([])
 
-  // store location info in variable to pass through to geocoding search base url
-  // retrieve api response with geocoded location (lat/long)
-  // store lat/long in new variable
-  // pass location variable as query params in astro api call
-
+  const [userInfo, setUserInfo] = useState({
+    username: '',
+    password: ''
+})
 
 
   return (
     <div className='app'>
+        <UserContext.Provider value={{ userInfo, setUserInfo }}>
       <h1>Galaxy Gaze</h1>
       <h2>An astronomy app</h2>
       <header>
@@ -38,6 +33,7 @@ function App() {
           <Route path='/user' element={<User />} />
         </Routes>
       </main>
+        </UserContext.Provider>
     </div>
   )
 }
