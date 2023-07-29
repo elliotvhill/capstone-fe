@@ -24,6 +24,7 @@ export default {
         400: '#3F4364',
         500: '#2A2D43',
       },
+      'white': '#FFFFFF',
     },
     fontFamily: {
       sans: ['Quicksand', 'sans-serif'],

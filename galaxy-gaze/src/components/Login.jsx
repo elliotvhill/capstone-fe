@@ -27,13 +27,13 @@ const Login = () => {
 
 
     return (
-        <div className="login-container">
-            <form className="login" onSubmit={handleSubmit}>
+        <div className="login-container flex justify-center align-center items-center">
+            <form className="login flex flex-col w-1/3" onSubmit={handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <input
                     type='text'
                     className='form-input bg-gray-100 border-transparent
-                    focus:border-gray-500 focus:bg-white focus:ring-0 rounded-full m-1'
+                    focus:border-gray-500 focus:bg-white focus:ring-0 rounded-xl m-1'
                     placeholder="username"
                     id="username"
                     onChange={handleChange}
@@ -43,13 +43,13 @@ const Login = () => {
                 <input
                     type='password'
                     className='form-input bg-gray-100 border-transparent
-                    focus:border-gray-500 focus:bg-white focus:ring-0 rounded-full m-1'
+                    focus:border-gray-500 focus:bg-white focus:ring-0 rounded-xl m-1'
                     placeholder="password"
                     id="password"
                     onChange={handleChange}
                     value={userInfo.password}
                 />
-                <button type="submit" className='btn border-gray-400'>Log in</button>
+                <button type="submit" className='w-1/2 border-2 text-spacecadet-400 border-violet-500 rounded-full hover:border-violet-400 hover:text-platinum-200 hover:bg-violet-400'>Log in</button>
             </form>
         </div>
     )

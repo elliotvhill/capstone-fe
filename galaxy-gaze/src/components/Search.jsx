@@ -41,11 +41,11 @@ const SearchComponent = () => {
                     value={searchQuery}
                     onChange={handleChange}
                     placeholder='Search for a deep space object...'
-                    className='w-1/2 rounded-2xl bg-gray-100'
+                    className='w-1/2 rounded-2xl bg-gray-100 focus:ring-0'
                 />
                 <button
                     type='submit'
-                    className='submit-search w-1/4 border-2 border-greenyellow-200 rounded-full'
+                    className='submit-search w-1/4 border-2 text-spacecadet-400 border-violet-500 rounded-full hover:border-violet-400 hover:text-platinum-200 hover:bg-violet-400'
                 >
                     {" "}
                     Search{" "}
