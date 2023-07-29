@@ -32,20 +32,24 @@ const Login = () => {
                 <label htmlFor="username">Username</label>
                 <input
                     type='text'
-                    placeholder="Username"
+                    className='form-input bg-gray-100 border-transparent
+                    focus:border-gray-500 focus:bg-white focus:ring-0 rounded-full m-1'
+                    placeholder="username"
                     id="username"
                     onChange={handleChange}
                     value={userInfo.username}
-                />
+                    />
                 <label htmlFor="password">Password</label>
                 <input
                     type='password'
-                    placeholder="Password"
+                    className='form-input bg-gray-100 border-transparent
+                    focus:border-gray-500 focus:bg-white focus:ring-0 rounded-full m-1'
+                    placeholder="password"
                     id="password"
                     onChange={handleChange}
                     value={userInfo.password}
                 />
-                <button type="submit">Log in</button>
+                <button type="submit" className='btn border-gray-400'>Log in</button>
             </form>
         </div>
     )
