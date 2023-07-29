@@ -4,6 +4,8 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import SearchComponent from './components/Search'
 import Nav from './components/Nav'
+import Login from './components/Login'
+import User from './components/User'
 
 function App() {
 
@@ -32,6 +34,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/search' element={<SearchComponent />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/user' element={<User />} />
         </Routes>
       </main>
     </div>

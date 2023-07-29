@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import axios from 'axios'
 import { DEEP_SPACE_SEARCH_URL } from "../globals"
 
@@ -14,9 +14,9 @@ const SearchComponent = () => {
     const getDeepSpaceData = async () => {
         setLoading(true)
         try {
-            const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`)
+            // const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`)
             // const response = await axios.get(`https://galaxygaze.netlify.app/${searchQuery}`) // <-- netlify delpoyment
-            // const response = await axios.get(`http://localhost:8000/deepspaceobject/search/?term=${searchQuery}`) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
+            const response = await axios.get(`http://localhost:8000/deepspaceobject/search/?term=${searchQuery}`) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
             console.log(response.data)
             setSearchResults(response.data)
             } catch (error) {
