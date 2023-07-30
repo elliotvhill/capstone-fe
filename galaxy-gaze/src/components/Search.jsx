@@ -20,13 +20,6 @@ const SearchComponent = () => {
     }
     };
 
-    // axios.request(options).then(function (response) {
-    // console.log(response.data);
-    // }).catch(function (error) {
-    // console.error(error);
-    // });
-
-
     const handleChange = (event) => {
         setSearchQuery(event.target.value)
     }
@@ -39,7 +32,7 @@ const SearchComponent = () => {
             // const response = await axios.get(`https://galaxygaze.netlify.app/${searchQuery}`) // <-- netlify delpoyment
             // const response = await axios.get(
             //     `http://localhost:8000/deepspaceobject/search/?term=${searchQuery}`
-            // ) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
+            // ) // <-- just searches existing db in django admin -> testing local api endpoint for dev
             console.log(response.data)
             setSearchResults(response.data)
         } catch (error) {
