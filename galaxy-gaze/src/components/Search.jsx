@@ -25,6 +25,7 @@ const SearchComponent = () => {
             console.error("Error searching deep space:", error)
         } finally {
             setLoading(false)
+            setSearchQuery('')
         }
     }
 
