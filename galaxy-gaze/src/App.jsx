@@ -20,8 +20,8 @@ function App() {
   return (
     <div className='app flex-col justify-between bg-platinum-200 w-full h-screen'>
         <UserContext.Provider value={{ userInfo, setUserInfo }}>
-      <h1 className='text-licorice text-6xl font-semibold pt-8 pb-2'>Galaxy Gaze</h1>
-      <h2 className='text-2xl font-semibold'>An astronomy app</h2>
+      <h1 className='text-licorice text-3xl md:text-6xl font-bold md:font-semibold pt-8 pb-2'>Galaxy Gaze</h1>
+      <h2 className='text-xl md:text-2xl font-semibold text-spacecadet-400'>An astronomy app</h2>
       <header>
         <Nav />
       </header>

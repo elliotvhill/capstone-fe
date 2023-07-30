@@ -35,7 +35,7 @@ const SearchComponent = () => {
 
     return (
         <div className='search'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="space-x-4 md:text-base lg:text-base text-sm">
                 <input
                     type='text'
                     value={searchQuery}
@@ -45,7 +45,7 @@ const SearchComponent = () => {
                 />
                 <button
                     type='submit'
-                    className='submit-search w-1/4 border-2 text-spacecadet-400 border-violet-500 rounded-full hover:border-violet-400 hover:text-platinum-200 hover:bg-violet-400'
+                    className='submit-search w-1/6 border text-spacecadet-400 border-violet-500 rounded-full hover:border-violet-400 hover:text-platinum-200 hover:bg-violet-400 p-2'
                 >
                     {" "}
                     Search{" "}

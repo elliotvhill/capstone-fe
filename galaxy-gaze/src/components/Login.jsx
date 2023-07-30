@@ -29,7 +29,7 @@ const Login = () => {
     return (
         <div className="login-container flex justify-center align-center items-center">
             <form className="login flex flex-col w-1/3" onSubmit={handleSubmit}>
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username" className='font-medium'>Username</label>
                 <input
                     type='text'
                     className='form-input bg-gray-100 border-transparent
@@ -39,7 +39,7 @@ const Login = () => {
                     onChange={handleChange}
                     value={userInfo.username}
                     />
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password" className='font-medium'>Password</label>
                 <input
                     type='password'
                     className='form-input bg-gray-100 border-transparent

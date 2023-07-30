@@ -2,7 +2,7 @@ import Login from './Login'
 
 const Home = () => {
     return (
-        <div className='home'>
+        <div className='home text-spacecadet-500'>
             <h2 className='text-2xl my-4'> This is Home </h2>
             <div className='m-15 mx-20'>
             <p className='mt-6'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis est facilis, ut ipsum, eum molestiae atque tempore suscipit nesciunt voluptatem eius enim voluptatibus earum hic neque? Praesentium placeat vel provident!</p>
