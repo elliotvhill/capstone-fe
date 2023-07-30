@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import UserContext from '../UserContext'
+import Register from './Register'
 
 const Login = () => {
 
@@ -49,7 +50,8 @@ const Login = () => {
                     onChange={handleChange}
                     value={userInfo.password}
                 />
-                <button type="submit" className='w-1/2 border-2 text-spacecadet-400 border-violet-500 rounded-full hover:border-violet-400 hover:text-platinum-200 hover:bg-violet-400'>Log in</button>
+                <button type="submit" className='border text-spacecadet-400 border-violet-500 rounded-full hover:border-violet-400 hover:text-platinum-200 hover:bg-violet-400 m-1 mt-3 p-1 font-semibold'>Log in</button>
+                <button type="submit" className='border border-violet-500 hover:bg-spacecadet-400 rounded-full text-platinum-200 bg-violet-500 m-1 mt-2 p-1 font-semibold hover:border-spacecadet-400'>Register</button>
             </form>
         </div>
     )
