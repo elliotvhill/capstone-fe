@@ -2,10 +2,30 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { DEEP_SPACE_SEARCH_URL } from "../globals"
 
+
 const SearchComponent = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const [searchResults, setSearchResults] = useState([])
     const [loading, setLoading] = useState(false)
+
+    const AUTH_STR = import.meta.env.ASTRO_AUTH_STR
+
+    const options = {
+    method: 'GET',
+    // url: 'https://api.astronomyapi.com/api/v2/search',
+    params: {term: `${searchQuery}`, match_type: 'fuzzy', limit: '10', offset: '0'},
+    headers: {
+        Accept: '*/*',
+        Authorization: `Basic ${AUTH_STR}`
+    }
+    };
+
+    // axios.request(options).then(function (response) {
+    // console.log(response.data);
+    // }).catch(function (error) {
+    // console.error(error);
+    // });
+
 
     const handleChange = (event) => {
         setSearchQuery(event.target.value)
@@ -13,12 +33,13 @@ const SearchComponent = () => {
 
     const getDeepSpaceData = async () => {
         setLoading(true)
+        console.log(searchQuery)
         try {
-            // const response = await axios.get(`${DEEP_SPACE_SEARCH_URL}${searchQuery}`)
+            const response = await axios.get('https://api.astronomyapi.com/api/v2/search', options)
             // const response = await axios.get(`https://galaxygaze.netlify.app/${searchQuery}`) // <-- netlify delpoyment
-            const response = await axios.get(
-                `http://localhost:8000/deepspaceobject/search/?term=${searchQuery}`
-            ) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
+            // const response = await axios.get(
+            //     `http://localhost:8000/deepspaceobject/search/?term=${searchQuery}`
+            // ) // <-- just searches existing db in django admin -> NOT what we want // testing local api endpoint for dev
             console.log(response.data)
             setSearchResults(response.data)
         } catch (error) {
