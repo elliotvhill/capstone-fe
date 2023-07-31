@@ -13,15 +13,16 @@ function App() {
 
 
   const [userInfo, setUserInfo] = useState({
+    user_email: '',
     username: '',
-    password: ''
+    user_password: ''
   })
   
   const [loggedIn, setLoggedIn] = useState(false)
 
   // login status:
   useEffect(() => {
-    if (userInfo.username && userInfo.password) {
+    if (userInfo.user_email && userInfo.username && userInfo.password) {
       setLoggedIn(true)
     } else {
       setLoggedIn(false)
