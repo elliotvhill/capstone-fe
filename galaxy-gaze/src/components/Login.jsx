@@ -14,11 +14,16 @@ const Login = ({ loggedIn, setLoggedIn }) => {
     // function to handle submit
     const handleSubmit = (event) => {
         event.preventDefault()
-        setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
-        console.log(userInfo)
-        setLoggedIn(true)
-        console.log(loggedIn)
-        setUserInfo({ username: '', password: '' })
+        try {
+            setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
+            console.log(userInfo)
+            setLoggedIn(true)
+            console.log(loggedIn)
+            setUserInfo({ username: '', user_password: '' })
+        } catch (error) {
+            console.log(error.response.data)
+            setUserInfo({ username: '', user_password: '' })
+        }
     }
     
 
@@ -37,15 +42,15 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                     onChange={handleChange}
                     value={userInfo.username}
                     />
-                <label htmlFor="password" className='font-medium mt-4 mb-2'>Password:</label>
+                <label htmlFor="user_password" className='font-medium mt-4 mb-2'>Password:</label>
                 <input
                     type='password'
                     className='form-input mb-2 bg-gray-100 border-transparent
                     focus:border-gray-500 focus:bg-white focus:ring-0 rounded-xl m-1'
                     placeholder="password"
-                    id="password"
+                    id="user_password"
                     onChange={handleChange}
-                    value={userInfo.password}
+                    value={userInfo.user_password}
                 />
                 <button type="submit" className='border border-violet-500 hover:bg-spacecadet-400 rounded-full text-platinum-200 bg-violet-500 m-1 mt-4 p-1 font-semibold hover:border-spacecadet-400'>Log in</button>
             </form>

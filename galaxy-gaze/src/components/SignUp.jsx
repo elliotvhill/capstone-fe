@@ -26,10 +26,11 @@ const SignUp = ({ loggedIn, setLoggedIn }) => {
                 }
             })
             console.log(response)
-            setUserInfo({ user_email: '', username: '', user_password: '' })
+            // setUserInfo({ user_email: '', username: '', user_password: '' })
+            setUserInfo({ username: '', user_password: '' })
         } catch (error) {
             console.log(error.response.data)
-            setUserInfo({ user_email: '', username: '', user_password: '' })
+            setUserInfo({ username: '', user_password: '' })
         }
 
     }
@@ -44,7 +45,7 @@ const SignUp = ({ loggedIn, setLoggedIn }) => {
                 className='signup flex flex-col w-1/3'
                 onSubmit={handleSignUp}
             >
-                <label htmlFor='user_email' className='font-medium mt-4 mb-2'>
+                {/* <label htmlFor='user_email' className='font-medium mt-4 mb-2'>
                     Enter an email address:
                 </label>
                 <input
@@ -55,7 +56,7 @@ const SignUp = ({ loggedIn, setLoggedIn }) => {
                     id='user_email'
                     onChange={handleChange}
                     value={userInfo.user_email}
-                />
+                /> */}
                 <label htmlFor='username' className='font-medium mt-4 mb-2'>
                     Enter a username:
                 </label>
@@ -78,7 +79,7 @@ const SignUp = ({ loggedIn, setLoggedIn }) => {
                     placeholder='password'
                     id='user_password'
                     onChange={handleChange}
-                    value={userInfo.password}
+                    value={userInfo.user_password}
                 />
                 <button
                     type='submit'
