@@ -25,7 +25,7 @@ const Nav = () => {
                 to='/login'
                 className='text-greenyellow-700 hover:drop-shadow-[0px_2px_3px_var(--tw-shadow-color)] hover:shadow-greenyellow-200'
             >
-                Log In
+                Login
             </Link>
             <Link
                 to='/signup'
