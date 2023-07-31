@@ -15,7 +15,9 @@ function App() {
   const [userInfo, setUserInfo] = useState({
     // user_email: '',
     username: '',
-    user_password: ''
+    user_password: '',
+    followed_bodies: [],
+    followed_events: [],
   })
   
   const [loggedIn, setLoggedIn] = useState(false)

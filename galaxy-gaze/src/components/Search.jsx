@@ -4,7 +4,7 @@ import axios from "axios"
 import { DEEP_SPACE_SEARCH_URL } from "../globals"
 
 
-const SearchComponent = ({ loggedIn, setLoggedIn }) => {
+const SearchComponent = ({ loggedIn, setLoggedIn, userInfo, setUserInfo }) => {
     const [searchQuery, setSearchQuery] = useState("")
     const [searchResults, setSearchResults] = useState([])
     const [loading, setLoading] = useState(false)
@@ -51,19 +51,38 @@ const SearchComponent = ({ loggedIn, setLoggedIn }) => {
         getDeepSpaceData()
     }
 
-    // const favorite = async (event) => {
-    //     loggedIn === true ?
-    //         // can add to favorites / 'follow'
-    //         searchResults.map((result) => {
-    //             try {
-    //                 // axios post to user model in db
-    //                 const response = await axios.post('http://127.0.0.1:8000/', )
-    //             } catch (error) {
-    //                 console.log(error.response.data)
-    //             }
-    //         })
-    //         // get ID of object
-    //         // post to followed_objects in user model
+
+    const handleFavorite = (event) => {
+        setUserInfo({...userInfo, [event.target.id]: event.target.value})
+    }
+    const saveFavorite = async (event) => {
+        // loggedIn === true ?
+            // get object ID
+            // let objectId = searchResults.object.id
+            // get user ID
+            let userId = userInfo.id
+
+            // searchResults.map((result) => {
+            // add object id to followed_bodies array in userInfo
+                try {
+                    // axios post to user model in db
+                    const response = await axios.post(`http://127.0.0.1:8000/users/${userId}`, userInfo, {
+                        headers: {
+                            'Accept': '*/*',
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Basic ZWxsaW90aGlsbDpnYWxheHlnYXpl',
+                        }
+                    })
+                    handleFavorite()
+                    console.log('favorited object id: ', objectId)
+                    // setUserInfo({ followed_bodies })
+                } catch (error) {
+                    console.log(error.response.data)
+                }
+    }
+            // )
+            // get ID of object
+            // post to followed_objects in user model
             
     // }
 
@@ -107,7 +126,7 @@ const SearchComponent = ({ loggedIn, setLoggedIn }) => {
                             <p className='object-position-dec'>
                                 Declination: {result.object_position_dec}
                             </p>
-                            <button className="m-3 mt-3 p-2 font-medium rounded-full bg-greenyellow-200">Favorite</button>
+                            <button onClick={saveFavorite} key={result.id} className="m-3 mt-3 p-2 font-medium rounded-full bg-greenyellow-200">Favorite</button>
                         </div>
                     ))
                 ) : (
