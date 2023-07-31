@@ -8,11 +8,13 @@ const SearchComponent = () => {
     const [searchResults, setSearchResults] = useState([])
     const [loading, setLoading] = useState(false)
 
-    const AUTH_STR = import.meta.env.ASTRO_AUTH_STR
+    const applicationId = import.meta.env.ASTRO_APP_ID
+    const applicationSecret = import.meta.env.ASTRO_APP_SECRET
+    const AUTH_STR = btoa(`${applicationId}:${applicationSecret}`)
 
     const options = {
     method: 'GET',
-    // url: 'https://api.astronomyapi.com/api/v2/search',
+    // url: 'https://api.astronomyapi.com/api/v2/search/',
     params: {term: `${searchQuery}`, match_type: 'fuzzy', limit: '10', offset: '0'},
     headers: {
         Accept: '*/*',
@@ -28,7 +30,7 @@ const SearchComponent = () => {
         setLoading(true)
         console.log(searchQuery)
         try {
-            const response = await axios.get('https://api.astronomyapi.com/api/v2/search', options)
+            const response = await axios.get('https://api.astronomyapi.com/api/v2/search/', options)
             // const response = await axios.get(`https://galaxygaze.netlify.app/${searchQuery}`) // <-- netlify delpoyment
             // const response = await axios.get(
             //     `http://localhost:8000/deepspaceobject/search/?term=${searchQuery}`
