@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import UserContext from '../UserContext'
 import SignUp from './SignUp'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const Login = ({ loggedIn, setLoggedIn }) => {
     const { userInfo, setUserInfo } = useContext(UserContext)
@@ -12,14 +13,32 @@ const Login = ({ loggedIn, setLoggedIn }) => {
     }
     
     // function to handle submit
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
+        setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
         try {
-            setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
-            console.log(userInfo)
-            setLoggedIn(true)
-            console.log(loggedIn)
-            setUserInfo({ username: '', user_password: '' })
+            // does userInfo exist in DB ?
+            ///// get users from DB
+            const response = await axios.get('http://127.0.0.1:8000/users/', userInfo, {
+                headers: {
+                    'Accept': '*/*',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ZWxsaW90aGlsbDpnYWxheHlnYXpl',
+                }
+            })
+
+
+            ///// map through users in DB
+            ///// does username match a username
+                    // log in 
+                    console.log(userInfo)
+                    setLoggedIn(true)
+                    console.log(loggedIn)
+                    setUserInfo({ username: '', user_password: '' })
+            // else error -> sign up
+            
+            // userInfo ? 
+
         } catch (error) {
             console.log(error.response.data)
             setUserInfo({ username: '', user_password: '' })

@@ -30,11 +30,11 @@ const SearchComponent = () => {
         setLoading(true)
         console.log(searchQuery)
         try {
-            const response = await axios.get('https://api.astronomyapi.com/api/v2/search/', options)
+            // const response = await axios.get('https://api.astronomyapi.com/api/v2/search/', options)
             // const response = await axios.get(`https://galaxygaze.netlify.app/${searchQuery}`) // <-- netlify delpoyment
-            // const response = await axios.get(
-            //     `http://localhost:8000/deepspaceobject/search/?term=${searchQuery}`
-            // ) // <-- just searches existing db in django admin -> testing local api endpoint for dev
+            const response = await axios.get(
+                `http://localhost:8000/deepspaceobject/search/?term=${searchQuery}`
+            ) // <-- just searches existing db in django admin -> testing local api endpoint for dev
             console.log(response.data)
             setSearchResults(response.data)
         } catch (error) {
