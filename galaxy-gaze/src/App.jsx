@@ -14,7 +14,18 @@ function App() {
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: ''
-})
+  })
+  
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  // login status:
+  useEffect(() => {
+    if (userInfo.username && userInfo.password) {
+      setLoggedIn(true)
+    } else {
+      setLoggedIn(false)
+    }
+  }, [userInfo])
 
 
   return (
@@ -29,7 +40,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/search' element={<SearchComponent />} />
-          <Route path='/login' element={<Login />} />
+            <Route path='/login' element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
           <Route path='/user' element={<User />} />
         </Routes>
       </main>
