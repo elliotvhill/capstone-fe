@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
+import UserContext from "../UserContext"
 import axios from "axios"
 import { DEEP_SPACE_SEARCH_URL } from "../globals"
 
 
-const SearchComponent = () => {
+const SearchComponent = ({ loggedIn, setLoggedIn }) => {
     const [searchQuery, setSearchQuery] = useState("")
     const [searchResults, setSearchResults] = useState([])
     const [loading, setLoading] = useState(false)
@@ -12,15 +13,15 @@ const SearchComponent = () => {
     const applicationSecret = import.meta.env.ASTRO_APP_SECRET
     const AUTH_STR = btoa(`${applicationId}:${applicationSecret}`)
 
-    const options = {
-    method: 'GET',
-    // url: 'https://api.astronomyapi.com/api/v2/search/',
-    params: {term: `${searchQuery}`, match_type: 'fuzzy', limit: '10', offset: '0'},
-    headers: {
-        Accept: '*/*',
-        Authorization: `Basic ${AUTH_STR}`
-    }
-    };
+    // const options = {
+    // method: 'GET',
+    // // url: 'https://api.astronomyapi.com/api/v2/search/',
+    // params: {term: `${searchQuery}`, match_type: 'fuzzy', limit: '10', offset: '0'},
+    // headers: {
+    //     Accept: '*/*',
+    //     Authorization: `Basic ${AUTH_STR}`
+    // }
+    // };
 
     const handleChange = (event) => {
         setSearchQuery(event.target.value)
@@ -49,6 +50,22 @@ const SearchComponent = () => {
         event.preventDefault()
         getDeepSpaceData()
     }
+
+    // const favorite = async (event) => {
+    //     loggedIn === true ?
+    //         // can add to favorites / 'follow'
+    //         searchResults.map((result) => {
+    //             try {
+    //                 // axios post to user model in db
+    //                 const response = await axios.post('http://127.0.0.1:8000/', )
+    //             } catch (error) {
+    //                 console.log(error.response.data)
+    //             }
+    //         })
+    //         // get ID of object
+    //         // post to followed_objects in user model
+            
+    // }
 
     return (
         <div className='search'>
@@ -90,6 +107,7 @@ const SearchComponent = () => {
                             <p className='object-position-dec'>
                                 Declination: {result.object_position_dec}
                             </p>
+                            <button className="m-3 mt-3 p-2 font-medium rounded-full bg-greenyellow-200">Favorite</button>
                         </div>
                     ))
                 ) : (
