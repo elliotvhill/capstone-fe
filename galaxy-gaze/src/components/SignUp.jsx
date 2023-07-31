@@ -10,26 +10,25 @@ const SignUp = ({ loggedIn, setLoggedIn }) => {
     const handleChange = (event) => {
         setUserInfo({...userInfo, [event.target.id]: event.target.value})
     }
-    
-    // POST new user to django DB
-    // const addUser = {
-    //     method: 'POST',
-    //     params: ({ username: userInfo.username, password: userInfo.password }),
-    //     url: `/api/users`
-    // }
 
     // function to handle signup
-    const handleSignUp = async () => {
+    const handleSignUp = async (event) => {
         event.preventDefault()
         try {
-            setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
+            // setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
             console.log(userInfo)
             console.log('created user')
-            const response = await axios.post('http://127.0.0.1:8000/admin/galaxy_gaze/user/', userInfo, { headers: { 'Content-Type': 'application/json'}})
+            const response = await axios.post('http://127.0.0.1:8000/users/', userInfo, {
+                headers: {
+                    'Accept': '*/*',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ZWxsaW90aGlsbDpnYWxheHlnYXpl',
+                }
+            })
             console.log(response)
             setUserInfo({ username: '', password: '' })
         } catch (error) {
-            console.log(error)
+            console.log(error.response.data)
             setUserInfo({ username: '', password: '' })
         }
 
