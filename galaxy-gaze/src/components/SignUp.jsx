@@ -1,28 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import UserContext from '../UserContext'
-import SignUp from './SignUp'
 
-const Login = ({ loggedIn, setLoggedIn }) => {
+const SignUp = ({ loggedIn, setLoggedIn }) => {
+
     const { userInfo, setUserInfo } = useContext(UserContext)
-    
-    // function to handle submit
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
-        console.log(userInfo)
-        setLoggedIn(true)
-        console.log(loggedIn)
-        setUserInfo({ username: '', password: '' })
-    }
-    
-        // function to handle change
-        const handleChange = (event) => {
-            setUserInfo({...userInfo, [event.target.id]: event.target.value})
-        }
-
-
     return (
-        <div className="login-container flex justify-center align-center items-center">
+        <div className="sign-up flex justify-center align-center items-center">
+            <h1 className='text-xl md:text-2xl font-semibold'>Sign up</h1>
             <form className="login flex flex-col w-1/3" onSubmit={handleSubmit}>
                 <label htmlFor="username" className='font-medium'>Username</label>
                 <input
@@ -44,11 +28,10 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                     onChange={handleChange}
                     value={userInfo.password}
                 />
-                <button type="submit" className='border text-spacecadet-400 border-violet-500 rounded-full hover:border-violet-400 hover:text-platinum-200 hover:bg-violet-400 m-1 mt-3 p-1 font-semibold'>Log in</button>
-                {/* <button type="submit" className='border border-violet-500 hover:bg-spacecadet-400 rounded-full text-platinum-200 bg-violet-500 m-1 mt-2 p-1 font-semibold hover:border-spacecadet-400'>Sign up</button> */}
+                <button type="submit" className='border border-violet-500 hover:bg-spacecadet-400 rounded-full text-platinum-200 bg-violet-500 m-1 mt-2 p-1 font-semibold hover:border-spacecadet-400'>Sign up</button>
             </form>
         </div>
     )
 }
 
-export default Login
+export default SignUp

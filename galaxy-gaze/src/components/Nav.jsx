@@ -9,14 +9,29 @@ const Nav = () => {
             >
                 Home
             </Link>
-            <Link to='/search' className='text-greenyellow-700 hover:drop-shadow-[0px_2px_3px_var(--tw-shadow-color)] hover:shadow-greenyellow-200'>
+            <Link
+                to='/search'
+                className='text-greenyellow-700 hover:drop-shadow-[0px_2px_3px_var(--tw-shadow-color)] hover:shadow-greenyellow-200'
+            >
                 Search
             </Link>
-            <Link to='/user' className='text-greenyellow-700 hover:drop-shadow-[0px_2px_3px_var(--tw-shadow-color)] hover:shadow-greenyellow-200'>
+            <Link
+                to='/user'
+                className='text-greenyellow-700 hover:drop-shadow-[0px_2px_3px_var(--tw-shadow-color)] hover:shadow-greenyellow-200'
+            >
                 Account
             </Link>
-            <Link to='/login' className='text-greenyellow-700 hover:drop-shadow-[0px_2px_3px_var(--tw-shadow-color)] hover:shadow-greenyellow-200'>
+            <Link
+                to='/login'
+                className='text-greenyellow-700 hover:drop-shadow-[0px_2px_3px_var(--tw-shadow-color)] hover:shadow-greenyellow-200'
+            >
                 Log In
+            </Link>
+            <Link
+                to='/signup'
+                className='text-greenyellow-700 hover:drop-shadow-[0px_2px_3px_var(--tw-shadow-color)] hover:shadow-greenyellow-200'
+            >
+                Sign Up
             </Link>
         </div>
     )

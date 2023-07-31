@@ -6,6 +6,7 @@ import SearchComponent from './components/Search'
 import Nav from './components/Nav'
 import Login from './components/Login'
 import User from './components/User'
+import SignUp from './components/SignUp'
 import UserContext from './UserContext'
 
 function App() {
@@ -41,7 +42,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/search' element={<SearchComponent />} />
             <Route path='/login' element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
-          <Route path='/user' element={<User />} />
+            <Route path='/user' element={<User />} />
+            <Route path='/signup' element={<SignUp />} />
         </Routes>
       </main>
         </UserContext.Provider>
