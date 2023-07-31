@@ -1,24 +1,37 @@
 import React, { useState, useEffect, useContext } from "react"
 import UserContext from "../UserContext"
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const SignUp = ({ loggedIn, setLoggedIn }) => {
     const { userInfo, setUserInfo } = useContext(UserContext)
-
+    
+    // function to handle change
+    const handleChange = (event) => {
+        setUserInfo({...userInfo, [event.target.id]: event.target.value})
+    }
+    
+    // POST new user to django DB
+    const addUser = {
+        method: 'POST',
+        params: ({ username: userInfo.username, password: userInfo.password })
+    }
+    
     // function to handle signup
     const handleSignUp = (event) => {
         event.preventDefault()
         setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
         console.log(userInfo)
         setLoggedIn(true)
-        console.log('created user')
+        console.log('created user', loggedIn)
+
+        const newUser = async () => {
+            
+        }
+
         setUserInfo({ username: '', password: '' })
     }
     
-        // function to handle change
-        const handleChange = (event) => {
-            setUserInfo({...userInfo, [event.target.id]: event.target.value})
-        }
 
 
 

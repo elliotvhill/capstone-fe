@@ -6,6 +6,11 @@ import { Link } from 'react-router-dom'
 const Login = ({ loggedIn, setLoggedIn }) => {
     const { userInfo, setUserInfo } = useContext(UserContext)
     
+    // function to handle change
+    const handleChange = (event) => {
+        setUserInfo({...userInfo, [event.target.id]: event.target.value})
+    }
+    
     // function to handle submit
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -16,10 +21,6 @@ const Login = ({ loggedIn, setLoggedIn }) => {
         setUserInfo({ username: '', password: '' })
     }
     
-        // function to handle change
-        const handleChange = (event) => {
-            setUserInfo({...userInfo, [event.target.id]: event.target.value})
-        }
 
 
     return (
