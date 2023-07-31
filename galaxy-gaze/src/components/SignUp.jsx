@@ -14,9 +14,10 @@ const SignUp = ({ loggedIn, setLoggedIn }) => {
     // POST new user to django DB
     const addUser = {
         method: 'POST',
-        params: ({ username: userInfo.username, password: userInfo.password })
+        params: ({ username: userInfo.username, password: userInfo.password }),
+        url: `/api/users`
     }
-    
+
     // function to handle signup
     const handleSignUp = (event) => {
         event.preventDefault()
@@ -26,7 +27,7 @@ const SignUp = ({ loggedIn, setLoggedIn }) => {
         console.log('created user', loggedIn)
 
         const newUser = async () => {
-            
+            const user = await axios.post('http://127.0.0.1:8000/users/')
         }
 
         setUserInfo({ username: '', password: '' })
