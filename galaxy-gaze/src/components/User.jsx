@@ -26,7 +26,7 @@ const User = () => {
 
     return (
         <div className="user">
-            {userId ? <p>User ID: {userId}</p> : <p>Loading...</p>}
+            {userInfo.userId ? <p>User ID: {userInfo.userId}</p> : <p>Loading...</p>}
             <h2>Welcome, {`${userInfo.username}`}</h2>
             <div className='followed-items'>
                 {userInfo.followed_bodies && userInfo.followed_bodies.length > 0 ? (
