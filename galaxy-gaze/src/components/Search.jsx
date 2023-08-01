@@ -4,7 +4,7 @@ import axios from "axios"
 import { DEEP_SPACE_SEARCH_URL } from "../globals"
 
 
-const SearchComponent = ({ loggedIn, setLoggedIn, userInfo, setUserInfo }) => {
+const SearchComponent = ({ loggedIn, setLoggedIn, userInfo, setUserInfo, userId, setUserId }) => {
     const [searchQuery, setSearchQuery] = useState("")
     const [searchResults, setSearchResults] = useState([])
     const [loading, setLoading] = useState(false)
@@ -67,12 +67,9 @@ const SearchComponent = ({ loggedIn, setLoggedIn, userInfo, setUserInfo }) => {
                 try {
                     // axios post to user model in db
                     // const response = await axios.post(`http://127.0.0.1:8000/users/${userId}`, userInfo, {
-                    const response = await axios.post(`http://127.0.0.1:8000/users`, userInfo, {
-                        headers: {
-                            'Accept': '*/*',
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Basic ZWxsaW90aGlsbDpnYWxheHlnYXpl',
-                        }
+                    const response = await axios.get(`http://127.0.0.1:8000/users`)
+                    response.findOneById((user) => {
+
                     })
                     handleFavorite()
                     console.log('favorited object id: ', objectId)
@@ -83,7 +80,7 @@ const SearchComponent = ({ loggedIn, setLoggedIn, userInfo, setUserInfo }) => {
     }
             // )
             // get ID of object
-            // post to followed_objects in user model
+            // post to followed_bodies (or followed_events) in user model
             
     // }
 

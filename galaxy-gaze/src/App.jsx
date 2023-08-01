@@ -19,6 +19,8 @@ function App() {
     followed_bodies: [],
     followed_events: [],
   })
+
+  // const [userId, setUserId] = useState[null]
   
   const [loggedIn, setLoggedIn] = useState(false)
 
