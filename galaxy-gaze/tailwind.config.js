@@ -23,6 +23,9 @@ export default {
         400: '#75547F',
         500: '#72497F',
       },
+      'lapis': {
+        700: '#04578B'
+      },
       'licorice': '#0E0004',
       'greenyellow': {
         200: '#D8FFB8',

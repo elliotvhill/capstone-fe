@@ -2,13 +2,14 @@ import Login from './Login'
 
 const Home = () => {
     return (
-        <div className='home text-spacecadet-500'>
-            <h2 className=' text-xl md:text-2xl my-2 font-medium'> This is Home </h2>
-            <div className='m-15 mx-20 text-xl md:text-base'>
-            <p className='mt-6 md:mt-4'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis est facilis, ut ipsum, eum molestiae atque tempore suscipit nesciunt voluptatem eius enim voluptatibus earum hic neque? Praesentium placeat vel provident!</p>
-            <p className='mt-8 md:mt-6'>Dignissimos sint laborum possimus ut voluptatum quod ducimus ipsum, officia earum omnis fugiat blanditiis quidem soluta molestias, dolores ratione perferendis necessitatibus. Soluta, accusamus expedita rerum nulla earum aut corporis vel?</p>
-            <p className='mt-8 md:mt-6'>In dignissimos illum provident ut, praesentium, delectus rerum eaque iure facere pariatur velit recusandae ab soluta, similique aliquid aperiam porro dicta. Numquam esse alias doloremque laboriosam iusto et unde optio.</p>
+        <div className='home text-spacecadet-500 mx-8 md:mx-60 font-medium pb-20 text-xl md:text-2xl'>
+            <h2 className=' text-xl md:text-2xl my-2 font-semibold mt-8'> Let Galaxy Gaze be your guide to the sky! </h2>
+            <div className='flex justify-center'>
+            <img className="object-scale-down h-60 md:h-80" src="src/assets/rocket_silver.svg" alt="An illustration of a rocket." />
             </div>
+            <p className='mt-6 md:mt-10'> <span className='font-bold'>Galaxy Gaze</span> is a lightweight astronomy planning app. Using the open Astronomy API, search for and find the locations of different deep space objects.</p>
+            <p className='mt-8 md:mt-10'>Create an account and save your favorite space objects. Pull them up at any time to find their location in the sky!</p>
+            <p className='mt-8 md:mt-10'>Future updates will allow users to check and track stargazing conditions in their area, learn about and get alerts about astronomical events like full moons, meteor showers, etc., and share posts about their observations with friends.</p>
         </div>
     )
 }
