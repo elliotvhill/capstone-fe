@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import UserContext from '../UserContext'
 import SignUp from './SignUp'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const Login = ({ loggedIn, setLoggedIn }) => {
     const { userInfo, setUserInfo } = useContext(UserContext)
+    const navigate = useNavigate()
     
     // function to handle change
     const handleChange = (event) => {
@@ -31,15 +32,14 @@ const Login = ({ loggedIn, setLoggedIn }) => {
             const matchedUser = response.data.find(user => user.username === userInfo.username && user.user_password === userInfo.user_password)
             if (matchedUser) {
                 // log in 
-                console.log(userInfo)
-                setLoggedIn(true)
                 setUserInfo({
                     ...userInfo,
                     userId: matchedUser.id,
-                    username: '',
-                    user_password: '',
                 })
+                setLoggedIn(true)
                 console.log(loggedIn)
+                console.log(userInfo)
+                navigate('/user')
                 // else error -> sign up
             } else {
                 console.log('Invalid username or password')

@@ -20,11 +20,8 @@ const User = () => {
 
     // display favorited/followed items associated w/ the id of the user
 
-    const followed_bodies = userInfo.followed_bodies.all()
-    const followed_events = userInfo.followed_events.all()
-
     console.log('User info:', userInfo)
-    console.log('Followed bodies:', followed_bodies)
+    // console.log('Followed bodies:', followed_bodies)
     console.log('User ID:', userId)
 
     return (
@@ -32,8 +29,8 @@ const User = () => {
             {userId ? <p>User ID: {userId}</p> : <p>Loading...</p>}
             <h2>Welcome, {`${userInfo.username}`}</h2>
             <div className='followed-items'>
-                {followed_bodies && followed_bodies.length > 0 ? (
-                    followed_bodies.map((body) => {
+                {userInfo.followed_bodies && userInfo.followed_bodies.length > 0 ? (
+                    userInfo.followed_bodies.map((body) => {
                     return (
                         <div key={body.id}>
                         <div className='body'>
