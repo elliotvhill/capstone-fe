@@ -66,7 +66,8 @@ const SearchComponent = ({ loggedIn, setLoggedIn, userInfo, setUserInfo }) => {
             // add object id to followed_bodies array in userInfo
                 try {
                     // axios post to user model in db
-                    const response = await axios.post(`http://127.0.0.1:8000/users/${userId}`, userInfo, {
+                    // const response = await axios.post(`http://127.0.0.1:8000/users/${userId}`, userInfo, {
+                    const response = await axios.post(`http://127.0.0.1:8000/users`, userInfo, {
                         headers: {
                             'Accept': '*/*',
                             'Content-Type': 'application/json',
