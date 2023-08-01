@@ -96,8 +96,8 @@ const SearchComponent = ({ loggedIn, setLoggedIn, userInfo, setUserInfo, userId,
                 />
                 <button
                     type='submit'
-                    className='submit-search w-1/6 border text-spacecadet-400 border-violet-500 rounded-full hover:border-violet-400 hover:text-platinum-200 hover:bg-violet-400 p-2 font-semibold'
-                >
+                    className='submit-search min-w-1/2 md:min-w-1/4 border text-spacecadet-400 border-violet-500 rounded-full hover:border-violet-400 hover:text-platinum-200 hover:bg-violet-400 p-2 font-semibold'
+                    >
                     {" "}
                     Search{" "}
                 </button>
