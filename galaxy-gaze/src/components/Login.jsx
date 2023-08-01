@@ -7,6 +7,7 @@ import axios from 'axios'
 const Login = ({ loggedIn, setLoggedIn }) => {
     const { userInfo, setUserInfo } = useContext(UserContext)
     const navigate = useNavigate()
+    const LOGIN_AUTH = import.meta.env.LOGIN_AUTH
     
     // function to handle change
     const handleChange = (event) => {
@@ -24,7 +25,7 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Basic ZWxsaW90aGlsbDpnYWxheHlnYXpl',
+                    'Authorization': `Basic ${LOGIN_AUTH}`,
                 }
             })
 

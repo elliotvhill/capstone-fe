@@ -25,7 +25,6 @@ function App() {
 
   // login status:
   useEffect(() => {
-    // if (userInfo.user_email && userInfo.username && userInfo.password) {
     if (userInfo.userId) {
       setLoggedIn(true)
     } else {

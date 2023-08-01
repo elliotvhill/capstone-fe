@@ -32,16 +32,16 @@ const User = () => {
         <div className='user'>
             {userInfo.userId ? (
                 <>
-                    <p>User ID: {userInfo.userId}</p>
-                    <h2>Welcome, {`${userInfo.username}`}</h2>
+                    {/* <p>User ID: {userInfo.userId}</p> */}
+                    <h2 className="font-semibold text-xl mt-8">Welcome, {`${userInfo.username}!`}</h2>
                     <div className='followed-items'>
-                        <h2 className="font-semibold"> Favorited objects: </h2>
+                        <h2 className="font-semibold mt-10"> Favorited objects: </h2>
                         {userInfo.followed_bodies &&
                         userInfo.followed_bodies.length > 0 ? (
                             userInfo.followed_bodies.map((body) => {
                                 return (
                                     <div key={body.id} className='body'>
-                                            <h3> {body.name} </h3>
+                                            <h3 className="font-semibold"> {body.name} </h3>
                                             <p> Distance from Earth: {body.distanceFromEarth} km </p>
                                             <p> Other info: {body.extra_info} </p>
                                     </div>
