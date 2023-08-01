@@ -19,7 +19,6 @@ const Login = ({ loggedIn, setLoggedIn }) => {
         event.preventDefault()
         setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
         try {
-            // does userInfo exist in DB ?
             ///// get users from DB
             const response = await axios.get('http://127.0.0.1:8000/users/', userInfo, {
                 headers: {
@@ -86,7 +85,7 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                 />
                 <button type="submit" className='border border-violet-500 hover:bg-spacecadet-400 rounded-full text-platinum-200 bg-violet-500 m-1 mt-4 p-1 font-semibold hover:border-spacecadet-400'>Log in</button>
             </form>
-                <p className="mt-2 font-medium"> Don't have account? <Link to="/signup" className='font-bold text-violet-400'>Sign up</Link>
+                <p className="mt-2 font-medium"> Don't have an account? <Link to="/signup" className='font-bold text-violet-400'>Sign up</Link>
             </p>
         </div>
     )

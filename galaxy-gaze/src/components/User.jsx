@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import UserContext from "../UserContext"
 import axios from "axios"
+import { Link } from 'react-router-dom'
 
 const User = () => {
     const { userInfo, setUserInfo } = useContext(UserContext)
@@ -10,7 +11,8 @@ const User = () => {
         axios
             .get("http://localhost:8000/api/get_user_id")
             .then((response) => {
-                setUserId(response.data.user_id)
+                // setUserId(response.data.user_id)
+                setUserInfo(response.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -53,7 +55,7 @@ const User = () => {
                     </div>
                 </>
             ) : (
-                <p className="font-medium"> Please sign in.</p>
+                <p className="font-medium"> Please <Link to="/login" className='font-bold text-violet-400'>sign in</Link>.</p>
             )}
         </div>
     )
