@@ -27,21 +27,32 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                 }
             })
 
-
-            ///// map through users in DB
-            ///// does username match a username
-                    // log in 
-                    console.log(userInfo)
-                    setLoggedIn(true)
-                    console.log(loggedIn)
-                    setUserInfo({ username: '', user_password: '' })
-            // else error -> sign up
-            
-            // userInfo ? 
+            ///// does username match a user
+            const matchedUser = response.data.find(user => user.username === userInfo.username && user.user_password === userInfo.user_password)
+            if (matchedUser) {
+                // log in 
+                console.log(userInfo)
+                setLoggedIn(true)
+                setUserInfo({
+                    ...userInfo,
+                    userId: matchedUser.id,
+                    username: '',
+                    user_password: '',
+                })
+                console.log(loggedIn)
+                // else error -> sign up
+            } else {
+                console.log('Invalid username or password')
+                setUserInfo({
+                    ...userInfo,
+                    username: '',
+                    user_password: '',
+                })
+            }
 
         } catch (error) {
             console.log(error.response.data)
-            setUserInfo({ username: '', user_password: '' })
+            setUserInfo({ ...userInfo, username: '', user_password: '' })
         }
     }
     

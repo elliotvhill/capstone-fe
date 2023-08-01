@@ -9,7 +9,7 @@ const User = () => {
     // get the userId of logged in user
 
     useEffect(() => {
-        axios.get('/api/get_user_id')
+        axios.get('http://localhost:8000/api/get_user_id')
             .then(response => {
             setUserId(response.data.user_id)
             })
@@ -20,21 +20,27 @@ const User = () => {
 
     // display favorited/followed items associated w/ the id of the user
 
-    const followed_bodies = userInfo.followed_bodies
-    const followed_events = userInfo.followed_events
+    const followed_bodies = userInfo.followed_bodies.all()
+    const followed_events = userInfo.followed_events.all()
+
+    console.log('User info:', userInfo)
+    console.log('Followed bodies:', followed_bodies)
+    console.log('User ID:', userId)
 
     return (
         <div className="user">
             {userId ? <p>User ID: {userId}</p> : <p>Loading...</p>}
             <h2>Welcome, {`${userInfo.username}`}</h2>
             <div className='followed-items'>
-                {followed_bodies ?
-                    (followed_bodies.map((body) => {
+                {followed_bodies && followed_bodies.length > 0 ? (
+                    followed_bodies.map((body) => {
+                    return (
                         <div key={body.id}>
-                            <div className='body'>
-                                {followed_bodies.body.name}
-                            </div>
+                        <div className='body'>
+                            {body.name}
                         </div>
+                    </div>
+                        )
                 }) 
                     ) : (
                         <p className='no-faves'>No favorited items</p>
