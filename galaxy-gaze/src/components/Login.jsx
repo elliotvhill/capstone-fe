@@ -39,6 +39,7 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                 setLoggedIn(true)
                 console.log(loggedIn)
                 console.log(userInfo)
+                console.log("Followed Bodies:", userInfo.followed_bodies)
                 navigate('/user')
                 // else error -> sign up
             } else {

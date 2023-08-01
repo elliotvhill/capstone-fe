@@ -17,8 +17,8 @@ function App() {
     userId: null,
     username: '',
     user_password: '',
-    followed_bodies: [],
-    followed_events: [],
+    followed_bodies: [''],
+    followed_events: [''],
   })
   
   const [loggedIn, setLoggedIn] = useState(false)

@@ -18,6 +18,14 @@ const User = () => {
     }, [])
 
     console.log("User info:", userInfo)
+
+    // option for user to update info
+        // button/link to call up user info form
+        // fields for user information
+        // user can change username and/or password
+        // PUT axios request to UPDATE user info in DB
+
+
     // display favorited/followed items associated w/ the id of the user
 
     return (
@@ -27,12 +35,15 @@ const User = () => {
                     <p>User ID: {userInfo.userId}</p>
                     <h2>Welcome, {`${userInfo.username}`}</h2>
                     <div className='followed-items'>
+                        <h2 className="font-semibold"> Favorited objects: </h2>
                         {userInfo.followed_bodies &&
                         userInfo.followed_bodies.length > 0 ? (
                             userInfo.followed_bodies.map((body) => {
                                 return (
-                                    <div key={body.id}>
-                                        <div className='body'>{body.name}</div>
+                                    <div key={body.id} className='body'>
+                                            <h3> {body.name} </h3>
+                                            <p> Distance from Earth: {body.distanceFromEarth} km </p>
+                                            <p> Other info: {body.extra_info} </p>
                                     </div>
                                 )
                             })
@@ -42,7 +53,7 @@ const User = () => {
                     </div>
                 </>
             ) : (
-                <p> Please sign in.</p>
+                <p className="font-medium"> Please sign in.</p>
             )}
         </div>
     )
