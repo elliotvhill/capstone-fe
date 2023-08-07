@@ -6,16 +6,13 @@ import axios from 'axios'
 const SignUp = ({ loggedIn, setLoggedIn }) => {
     const { userInfo, setUserInfo } = useContext(UserContext)
     
-    // function to handle change
     const handleChange = (event) => {
         setUserInfo({...userInfo, [event.target.id]: event.target.value})
     }
 
-    // function to handle signup
     const handleSignUp = async (event) => {
         event.preventDefault()
         try {
-            // setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
             console.log(userInfo)
             console.log('created user')
             const response = await axios.post('http://127.0.0.1:8000/users/', userInfo, {
@@ -26,7 +23,6 @@ const SignUp = ({ loggedIn, setLoggedIn }) => {
                 }
             })
             console.log(response)
-            // setUserInfo({ user_email: '', username: '', user_password: '' })
             setUserInfo({ username: '', user_password: '' })
         } catch (error) {
             console.log(error.response.data)
@@ -45,18 +41,6 @@ const SignUp = ({ loggedIn, setLoggedIn }) => {
                 className='signup flex flex-col w-1/3'
                 onSubmit={handleSignUp}
             >
-                {/* <label htmlFor='user_email' className='font-medium mt-4 mb-2'>
-                    Enter an email address:
-                </label>
-                <input
-                    type='text'
-                    className='form-input mb-1 bg-gray-100 border-transparent
-                    focus:border-gray-500 focus:bg-white focus:ring-0 rounded-xl m-1'
-                    placeholder='email@example.com'
-                    id='user_email'
-                    onChange={handleChange}
-                    value={userInfo.user_email}
-                /> */}
                 <label htmlFor='username' className='font-medium mt-4 mb-2'>
                     Enter a username:
                 </label>

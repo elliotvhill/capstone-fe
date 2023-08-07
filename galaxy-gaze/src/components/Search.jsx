@@ -31,7 +31,6 @@ const SearchComponent = ({ loggedIn, setLoggedIn, userInfo, setUserInfo, userId,
         setLoading(true)
         console.log(searchQuery)
         try {
-            // const response = await axios.get('https://api.astronomyapi.com/api/v2/search/', options)
             const response = await axios.get(
                 `http://localhost:8000/deepspaceobject/search/?term=${searchQuery}`
             ) // <-- testing local api endpoint for dev
@@ -55,33 +54,23 @@ const SearchComponent = ({ loggedIn, setLoggedIn, userInfo, setUserInfo, userId,
         setUserInfo({...userInfo, [event.target.id]: event.target.value})
     }
     const saveFavorite = async (event) => {
-        // loggedIn === true ?
-            // get object ID
-            // let objectId = searchResults.object.id
-            // get user ID
+
             let userId = userInfo.id
 
-            // searchResults.map((result) => {
-            // add object id to followed_bodies array in userInfo
                 try {
-                    // axios post to user model in db
-                    // const response = await axios.post(`http://127.0.0.1:8000/users/${userId}`, userInfo, {
+
                     const response = await axios.get(`http://127.0.0.1:8000/users`)
                     response.findOneById((user) => {
 
                     })
                     handleFavorite()
                     console.log('favorited object id: ', objectId)
-                    // setUserInfo({ followed_bodies })
+
                 } catch (error) {
                     console.log(error.response.data)
                 }
     }
-            // )
-            // get ID of object
-            // post to followed_bodies (or followed_events) in user model
-            
-    // }
+
 
     return (
         <div className='search'>

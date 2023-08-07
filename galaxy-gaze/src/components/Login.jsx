@@ -9,17 +9,14 @@ const Login = ({ loggedIn, setLoggedIn }) => {
     const navigate = useNavigate()
     const LOGIN_AUTH = import.meta.env.LOGIN_AUTH
     
-    // function to handle change
     const handleChange = (event) => {
         setUserInfo({...userInfo, [event.target.id]: event.target.value})
     }
     
-    // function to handle submit
     const handleSubmit = async (event) => {
         event.preventDefault()
         setUserInfo({ ...userInfo, [event.target.id]: event.target.value })
         try {
-            ///// get users from DB
             const response = await axios.get('http://127.0.0.1:8000/users/', userInfo, {
                 headers: {
                     'Accept': '*/*',
@@ -28,10 +25,8 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                 }
             })
 
-            ///// does username match a user
             const matchedUser = response.data.find(user => user.username === userInfo.username && user.user_password === userInfo.user_password)
             if (matchedUser) {
-                // log in 
                 setUserInfo({
                     ...userInfo,
                     userId: matchedUser.id,
@@ -41,7 +36,6 @@ const Login = ({ loggedIn, setLoggedIn }) => {
                 console.log(userInfo)
                 console.log("Followed Bodies:", userInfo.followed_bodies)
                 navigate('/user')
-                // else error -> sign up
             } else {
                 console.log('Invalid username or password')
                 setUserInfo({

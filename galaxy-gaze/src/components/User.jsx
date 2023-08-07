@@ -34,7 +34,6 @@ const User = () => {
         <div className='user'>
             {userInfo.userId ? (
                 <>
-                    {/* <p>User ID: {userInfo.userId}</p> */}
                     <h2 className="font-semibold text-xl mt-8">Welcome, {`${userInfo.username}!`}</h2>
                     <div className='followed-items'>
                         <h2 className="font-semibold mt-10"> Favorited objects: </h2>

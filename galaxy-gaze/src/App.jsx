@@ -34,7 +34,6 @@ function App() {
 
 
   return (
-    // <div className='app flex-col justify-between bg-gradient-to-b from-platinum-200  via-lapis-700 from-40% to-spacecadet-500 to-99% w-full h-full'>
     <div className='app flex-col justify-between bg-platinum-200 w-full min-h-screen'>
         <UserContext.Provider value={{ userInfo, setUserInfo }}>
       <h1 className='text-licorice text-4xl md:text-6xl font-bold md:font-semibold pt-8 pb-2'>Galaxy Gaze</h1>
